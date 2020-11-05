@@ -1,14 +1,12 @@
-
-dataDir <- "UCI HAR Dataset"
-testDir <- "test"
+# Set data directories
+dataDir  <- "UCI HAR Dataset"
+testDir  <- "test"
 trainDir <- "train"
 
-# Read testdata
-testData <- read.table(paste(dataDir, testDir, "X_test.txt", sep = "/"))
-# Read traindata
+# Read testdata and traindata and merge them, i.e. concatenate both datasets in one dataset.
+testData  <- read.table(paste(dataDir, testDir, "X_test.txt", sep = "/"))
 trainData <- read.table(paste(dataDir, trainDir, "X_train.txt", sep = "/"))
-# Merge testdata and traindata, i.e. concatenate both datasets in one dataset: allData
-allData <- rbind(testData, trainData)
+allData   <- rbind(testData, trainData)
 
 ## Objective 1 fulfilled:
 ## 1. Merges the training and the test sets to create one data set.
@@ -35,19 +33,17 @@ allData <- allData[, columns]
 
 
 # Add the activity for each measurement
-# Read the test activities
-testActivities <- read.table(paste(dataDir, testDir, "y_test.txt", sep = "/"))
-# Read the train activities
+# Read the test activities and the train activities, merge them.
+testActivities  <- read.table(paste(dataDir, testDir, "y_test.txt", sep = "/"))
 trainActivities <- read.table(paste(dataDir, trainDir, "y_train.txt", sep = "/"))
-# Merge the test and train activities
-allActivities <- rbind(testActivities, trainActivities)
+allActivities   <- rbind(testActivities, trainActivities)
 names(allActivities)[1] <- "ActivityId"
 
 # Read the activity labels, a description of the activities,
 # and add these to the dataset as the first column.
-activityLabels <- read.table(paste(dataDir, "activity_labels.txt", sep = "/"))
+activityLabels    <- read.table(paste(dataDir, "activity_labels.txt", sep = "/"))
 allActivityLabels <- activityLabels[allActivities[,1],2]
-allData <- cbind(allActivityLabels, allData)
+allData           <- cbind(allActivityLabels, allData)
 names(allData)[1] <- "Activity"
 
 ## Objective 3 fulfilled:
@@ -62,20 +58,19 @@ write.csv(allData, file = "allData.csv", row.names = FALSE)
 # Create a second independent tidy data set with the average of each variable 
 # for each activity and each subject.
 
-# Read subjects for testdata
-subjectTest <- read.table(paste(dataDir, testDir, "subject_test.txt", sep = "/"))
-# Read subjects for traindata
+# Read subjects for testdata and traindata and merge them.
+subjectTest  <- read.table(paste(dataDir, testDir, "subject_test.txt", sep = "/"))
 subjectTrain <- read.table(paste(dataDir, trainDir, "subject_train.txt", sep = "/"))
-# Merge subjectTest and subjectTrain, i.e. concatenate both subject sets in one subjectset: subjects
-subjects <- rbind(subjectTest, subjectTrain)
+subjects     <- rbind(subjectTest, subjectTrain)
 
-# Add the subjects as a column to the measurements, allData
+# Merge the subjects and the measurements to form a new dataset.
 subjectData <- cbind(subjects, allData)
-# Calculate the average/mean of the measurements
-subjectData <- aggregate(subjectData[, 3:length(subjectData)], list(subjectData$V1, subjectData$Activity), mean)
+# Create from subjectData a new dataset that contains the average/mean of the measurements
+# for each activity of a subject.
+avgSubjectActivityData <- aggregate(subjectData[, 3:length(subjectData)], list(subjectData$V1, subjectData$Activity), mean)
 # Reorder and label the subjet and activity columns
-names(subjectData)[1:2] <- c("Subject", "Activity")
-subjectData <- subjectData[with(subjectData, order(Subject, Activity)),]
+names(avgSubjectActivityData)[1:2] <- c("Subject", "Activity")
+avgSubjectActivityData <- avgSubjectActivityData[with(avgSubjectActivityData, order(Subject, Activity)),]
 
 # Save the dataset as a csv file
-write.csv(subjectData, file = "subjectData.csv", row.names = FALSE)
+write.csv(avgSubjectActivityData, file = "avgSubjectActivityData.csv", row.names = FALSE)
