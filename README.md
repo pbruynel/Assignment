@@ -3,8 +3,7 @@ README
 
 The repository contains files for the final assignment of the course
 *Getting and Cleaning Data*.  
-The course is the third of ten courses of the *Data Science
-Specialization* on Coursera offered by Johns Hopkins University.  
+The course is the third of ten courses of the [Data Science Specialization](https://www.coursera.org/specializations/jhu-data-science) on Coursera offered by Johns Hopkins University.  
 
 ## Assignment
 The assignment is described as follows:  
@@ -48,22 +47,24 @@ the average of each variable for each activity and each subject.
 The repository contains the original dataset downloaded and unzipped from the 
 source mentioned in the assignment.
 All the original datafiles are located in the directory 'UCI HAR Dataset'.  
-The resulting tidy dataset that is generated is named 'allData' and is saved as
-a csv-file named 'allData,csv' and is
-contained in this repository.  
-The additional dataset that is created from the allData dataset is named
-'avgSubjectActivityData' and is also saved as a csv-file 'avgSubjectActivityData.csv'.
-This one is added to the repository too.
+The resulting tidy dataset that is generated is named *allData* and is written 
+to a csv-file named 'allData,csv'. It is contained in this repository.  
+The additional dataset that is created from the *allData* dataset is named
+*avgSubjectActivityData* and is also written to a csv-file 'avgSubjectActivityData.csv'.
+This file is added to the repository as well.
 
 ## R-script
 The R-script that carries out the transformation from the original datasets into
-the allData tidy dataset (and the avgSubjectActivityData dataset as well) is 
-found in the file 'run_analysis.R', as the assignment requires.
+the *allData* tidy dataset (and the *avgSubjectActivityData* dataset as well) is 
+found in the file 'run_analysis.R', as the assignment requires.  
+For the script to run succesfully it is required that the current working 
+directory contains the subdirectory 'UCI HAR Dataset', including the original 
+datafiles.
 
 ## Other files
 Besides the R-script and the datasets the repository contains a few other files:
-Codebook.md and README.md. Creating these two files is part of the assignment.  
-The Codebook.md file gives a description of the process of generating the tidy
-dataset allData by the R-script run_analysys.R. Besides that, it explains the 
+CodeBook.md and README.md. Providing these two files is part of the assignment.  
+The CodeBook.md file gives a description of the process of generating the tidy
+dataset *allData* by the R-script run_analysys.R. Furthermore, it explains the 
 structure and meaning of the tidy dataset.
 The README.md is the file you are currently reading.
