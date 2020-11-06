@@ -55,7 +55,7 @@ This file is added to the repository as well.
 
 ## R-script
 The R-script that carries out the transformation from the original datasets into
-the *allData* tidy dataset (and the *avgSubjectActivityData* dataset as well) is 
+the *allData* tidy dataset and the *avgSubjectActivityData* dataset as well is 
 found in the file 'run_analysis.R', as the assignment requires.  
 For the script to run succesfully it is required that the current working 
 directory contains the subdirectory 'UCI HAR Dataset', including the original 

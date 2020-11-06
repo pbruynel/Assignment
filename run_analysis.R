@@ -70,6 +70,7 @@ subjectData <- cbind(subjects, allData)
 avgSubjectActivityData <- aggregate(subjectData[, 3:length(subjectData)], list(subjectData$V1, subjectData$Activity), mean)
 # Reorder and label the subjet and activity columns
 names(avgSubjectActivityData)[1:2] <- c("Subject", "Activity")
+names(avgSubjectActivityData)[3:length(avgSubjectActivityData)] <- paste("Avg-",names(avgSubjectActivityData)[3:length(avgSubjectActivityData)], sep = "")
 avgSubjectActivityData <- avgSubjectActivityData[with(avgSubjectActivityData, order(Subject, Activity)),]
 
 # Save the dataset as a txt file
