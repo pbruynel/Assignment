@@ -48,9 +48,9 @@ The repository contains the original dataset downloaded and unzipped from the
 source mentioned in the assignment.
 All the original datafiles are located in the directory 'UCI HAR Dataset'.  
 The resulting tidy dataset that is generated is named *allData* and is written 
-to a csv-file named 'allData,csv'. It is contained in this repository.  
+to a txt-file named 'allData,txt'. It is contained in this repository.  
 The additional dataset that is created from the *allData* dataset is named
-*avgSubjectActivityData* and is also written to a csv-file 'avgSubjectActivityData.csv'.
+*avgSubjectActivityData* and is also written to a txt-file 'avgSubjectActivityData.txt'.
 This file is added to the repository as well.
 
 ## R-script

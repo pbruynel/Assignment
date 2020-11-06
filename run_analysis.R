@@ -51,8 +51,8 @@ names(allData)[1] <- "Activity"
 ## The column with activity names is labeled "Activity", according to
 ## objective 4.
 
-# Save the dataset as a csv file
-write.csv(allData, file = "allData.csv", row.names = FALSE)
+# Save the dataset as a txt file
+write.table(allData, file = "allData.txt", row.names = FALSE)
 
 
 # Create a second independent tidy data set with the average of each variable 
@@ -72,5 +72,5 @@ avgSubjectActivityData <- aggregate(subjectData[, 3:length(subjectData)], list(s
 names(avgSubjectActivityData)[1:2] <- c("Subject", "Activity")
 avgSubjectActivityData <- avgSubjectActivityData[with(avgSubjectActivityData, order(Subject, Activity)),]
 
-# Save the dataset as a csv file
-write.csv(avgSubjectActivityData, file = "avgSubjectActivityData.csv", row.names = FALSE)
+# Save the dataset as a txt file
+write.table(avgSubjectActivityData, file = "avgSubjectActivityData.txt", row.names = FALSE)
